@@ -14,11 +14,10 @@ builder.Services.AddDbContext<AppDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConection"));
 });
 
-//Регистрация Автомэппера
+//Регистрация Автомаппера
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
-builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddSingleton(mapper);
 
 
 //----------------------------------------------------------------------------------
